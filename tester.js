@@ -1,4 +1,4 @@
-window.wt = (function () {
+globalThis.wt = (function () {
   const tests = [];
 
   function isEqual(a, b) {
@@ -42,7 +42,7 @@ window.wt = (function () {
     tests.push({ name, fn });
   }
 
-  function clearTest() {
+  function reset() {
     tests.splice(0);
   }
 
@@ -64,7 +64,7 @@ window.wt = (function () {
 
   return {
     test,
-    clearTest,
+    reset,
     expect,
     runTests,
   };
