@@ -48,14 +48,15 @@ globalThis.wt = (function () {
     let failed = 0;
     tests.forEach((t) => {
       try {
+        console.error(`Test Case: ${t.name}`);
         t.fn();
-        console.log(`%c${t.name}: Passed`, "color: green;");
+        console.log('%cPassed', "color: green;");
         passed++;
       } catch (e) {
-        console.error(`%c${t.name}: Failed`, "color: red;");
         failed++;
       }
     });
+    console.log('==============================================');
     console.log(`Total: ${tests.length}, Passed: ${passed}, Failed: ${failed}`);
   }
 
