@@ -27,12 +27,9 @@ globalThis.wt = (function () {
   function expect(received) {
     return {
       toEqual(expected) {
+        console.assert(isEqual(received, expected), 'Expect: %o, received: %o', expected, received);
         if (!isEqual(received, expected)) {
-          throw new Error(
-            `\nExpected: ${JSON.stringify(
-              expected
-            )}, \nbut received: ${JSON.stringify(received)}`
-          );
+          throw new Error();
         }
       },
     };
@@ -55,7 +52,7 @@ globalThis.wt = (function () {
         console.log(`%c${t.name}: Passed`, "color: green;");
         passed++;
       } catch (e) {
-        console.error(`%c${t.name}: Failed`, "color: red;", e.message);
+        console.error(`%c${t.name}: Failed`, "color: red;");
         failed++;
       }
     });
